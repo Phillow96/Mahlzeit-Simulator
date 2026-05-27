@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://1ujd6jr1ta01"]
+
+[ext_resource type="Script" uid="uid://2mxxy61ip232" path="res://projectile.gd" id="1_a85iw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_akgne"]
+size = Vector2(80, 24)
+
+[node name="Area2D" type="Area2D" unique_id=206808821 groups=["projectile"]]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_a85iw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1838484579]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_akgne")
+
+[node name="ProjectileLabel" type="Label" parent="." unique_id=705987605]
+offset_left = -40.0
+offset_top = -16.0
+offset_right = 43.0
+offset_bottom = 7.0
+text = "MAHLZEIT!"

@@ -1,0 +1,177 @@
+[gd_scene format=3 uid="uid://bxra2fyxbi4fo"]
+
+[ext_resource type="Script" uid="uid://tvnimq0q20em" path="res://character_body_2d.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://dk23i7n64r7x0" path="res://assets/PUNY_MYTH-CREATURES-RPGMAKER_v1/Hero Battle Sprites/Katipunero.png" id="2_i3pqv"]
+[ext_resource type="Script" uid="uid://wqk6ulyr6hb6" path="res://mahlzeit_cooldown_label.gd" id="3_i3pqv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w48qg"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(192, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vivmo"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(256, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efxa6"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(128, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dg77c"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(64, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycdy4"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(0, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lquwl"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mycd"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_272bh"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vw27"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kek77"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c57u"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_efxa6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_i3pqv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w48qg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vivmo")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efxa6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dg77c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycdy4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lquwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mycd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_272bh")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vw27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kek77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c57u")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4c57u"]
+size = Vector2(29, 43)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
+radius = 104.307236
+
+[node name="Player" type="CharacterBody2D" unique_id=2043988467 groups=["player"]]
+collision_mask = 194
+script = ExtResource("1_onrkg")
+SPEED = 100.0
+HEALTH = 3
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1809324897]
+texture_filter = 1
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_efxa6")
+animation = &"down"
+frame_progress = 0.33884308
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1211646221]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_4c57u")
+
+[node name="MahlzeitDetector" type="Area2D" parent="." unique_id=2047851389]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MahlzeitDetector" unique_id=591840507]
+shape = SubResource("CircleShape2D_onrkg")
+
+[node name="MahlzeitTimer" type="Timer" parent="MahlzeitDetector" unique_id=1295128022]
+wait_time = 2.0
+one_shot = true
+
+[node name="Control" type="Control" parent="." unique_id=1894200746]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MahlzeitCooldownLabel" type="Label" parent="Control" unique_id=1492314437]
+layout_mode = 0
+offset_left = -47.0
+offset_top = -47.0
+offset_right = 49.0
+offset_bottom = -24.0
+text = "MAHLZEIT !! "
+script = ExtResource("3_i3pqv")
+metadata/_edit_use_anchors_ = true
+
+[node name="MahlzeitDisplay" type="Timer" parent="Control" unique_id=33760527]
+wait_time = 2.0
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=923434401]
+zoom = Vector2(1.5, 1.5)
+
+[connection signal="area_entered" from="MahlzeitDetector" to="." method="_on_mahlzeit_detector_area_entered"]
+[connection signal="timeout" from="Control/MahlzeitDisplay" to="." method="_on_mahlzeit_display_timeout"]

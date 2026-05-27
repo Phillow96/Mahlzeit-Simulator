@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://dwgyc6d4qtg72"]
+
+[ext_resource type="Script" uid="uid://yhrslpjmsw74" path="res://main.gd" id="1_lquwl"]
+[ext_resource type="PackedScene" uid="uid://bxra2fyxbi4fo" path="res://player.tscn" id="3_lquwl"]
+[ext_resource type="PackedScene" uid="uid://cfv74eih27ohh" path="res://map.tscn" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://b2kyau4bl1xvy" path="res://player_score.gd" id="4_7mycd"]
+[ext_resource type="PackedScene" uid="uid://1ujd6jr1ta01" path="res://projectile.tscn" id="4_272bh"]
+[ext_resource type="Script" uid="uid://da374cj41pp6e" path="res://player_health.gd" id="5_272bh"]
+[ext_resource type="PackedScene" uid="uid://c1xtnvdho34p3" path="res://enemy.tscn" id="8_5vw27"]
+
+[node name="Main" type="Node2D" unique_id=1573684800]
+script = ExtResource("1_lquwl")
+enemy_scene = ExtResource("8_5vw27")
+player_scene = ExtResource("3_lquwl")
+projectile_scene = ExtResource("4_272bh")
+
+[node name="Map" parent="." unique_id=1901068916 instance=ExtResource("4_1bvp3")]
+
+[node name="Control" type="Control" parent="." unique_id=1786868073]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayerScore" type="Label" parent="Control" unique_id=1036748963]
+layout_mode = 0
+offset_left = 24.0
+offset_top = -24.0
+offset_right = 84.0
+offset_bottom = -1.0
+text = "Score:"
+script = ExtResource("4_7mycd")
+
+[node name="PlayerHealth" type="Label" parent="Control" unique_id=1680143733]
+layout_mode = 0
+offset_left = 24.0
+offset_right = 85.0
+offset_bottom = 23.0
+text = "Health: "
+script = ExtResource("5_272bh")
+
+[node name="Player" parent="." unique_id=2043988467 instance=ExtResource("3_lquwl")]
+position = Vector2(24, 0)
+
+[connection signal="shoot" from="Player" to="." method="_on_player_shoot"]
