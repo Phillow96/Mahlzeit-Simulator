@@ -26,12 +26,7 @@ func initialize(player_pos: Vector2):
 	look_at(player_pos)
 	
 	
-func _on_body_entered(body: Node2D) -> void:
-	if(body.is_in_group("projectile")):
-		body.call_deferred("queue_free")
-		call_deferred("queue_free")
-		GameManager.SCORE += 1
-	
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("space") and in_range and $Timers/EnemyMahlzeitLabel.visible:
@@ -60,3 +55,10 @@ func _on_area_entered(area: Area2D) -> void:
 		area.call_deferred("queue_free")
 		call_deferred("queue_free")
 		GameManager.SCORE += 1
+
+func _on_body_entered(body: Node2D) -> void:
+	if(body.is_in_group("player")):
+		GameManager.HEALTH -= 1
+		queue_free()
+		
+	
