@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bxra2fyxbi4fo"]
 
-[ext_resource type="Script" uid="uid://tvnimq0q20em" path="res://character_body_2d.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://tvnimq0q20em" path="res://scripts/player/character_body_2d.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://dk23i7n64r7x0" path="res://assets/PUNY_MYTH-CREATURES-RPGMAKER_v1/Hero Battle Sprites/Katipunero.png" id="2_i3pqv"]
-[ext_resource type="Script" uid="uid://wqk6ulyr6hb6" path="res://mahlzeit_cooldown_label.gd" id="3_i3pqv"]
+[ext_resource type="Script" uid="uid://wqk6ulyr6hb6" path="res://scripts/labels/mahlzeit_cooldown_label.gd" id="3_i3pqv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w48qg"]
 atlas = ExtResource("2_i3pqv")
