@@ -44,17 +44,10 @@ func _physics_process(_delta):
 		shoot.emit()
 		mahlzeit_cd = true
 		$Control/MahlzeitDisplay.start()
+		$Control/MahlzeitCooldownLabel.show()
 		
 func _process(_delta: float) -> void:
 	GameManager.PLAYER_POSITION = position
-		
-func _on_mahlzeit_timer_timeout() -> void:
-	print("Player Mahlzeit Chance timeout")
-	print(player_safe)
-	if player_safe == false:
-		GameManager.HEALTH -= 1
-	else:
-		print("player safe")
 
 
 func _on_mahlzeit_display_timeout() -> void:

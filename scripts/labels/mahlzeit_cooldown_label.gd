@@ -1,5 +1,5 @@
 extends Label
 
 
-func _process(delta: float) -> void:
-	text = "%.2s" % $"../MahlzeitDisplay".time_left
+func _process(_delta: float) -> void:
+	text = "%.2f" % $"../MahlzeitDisplay".time_left
