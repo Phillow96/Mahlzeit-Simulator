@@ -22,6 +22,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if GameManager.HEALTH <= 0:
 		$GameOver/CanvasLayer.visible = true
+		save_highscore(GameManager.SCORE, GameManager.PLAYER_NAME)
 
 
 func _on_player_shoot() -> void:
@@ -43,3 +44,27 @@ func _on_end_game_button_pressed() -> void:
 func _on_canvas_layer_visibility_changed() -> void:
 	if $GameOver/CanvasLayer.visible:
 		get_tree().paused = true
+
+# Highscore speichern
+func save_highscore(new_score: int, player_name: String):
+	var highscores = load_highscores()
+	highscores.append({"name": player_name, "score": new_score})
+	highscores.sort_custom(func(a, b): return a["score"] > b["score"])
+	highscores = highscores.slice(0, 10)  # Top 10 behalten
+
+	var file = FileAccess.open("user://highscores.json", FileAccess.WRITE)
+	file.store_string(JSON.stringify(highscores))
+	file.close()
+
+# Highscores laden
+func load_highscores() -> Array:
+	if FileAccess.file_exists("user://highscores.json"):
+		var file = FileAccess.open("user://highscores.json", FileAccess.READ)
+		var data = JSON.parse_string(file.get_as_text())
+		file.close()
+		return data
+	return []
+
+
+func _on_display_high_score_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://high_score_list.tscn")
