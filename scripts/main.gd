@@ -25,4 +25,4 @@ func _on_player_shoot() -> void:
 	var projectile = projectile_scene.instantiate()
 	add_child(projectile)
 	projectile.position = GameManager.PLAYER_POSITION
-	
+	projectile.direction = (get_global_mouse_position() - GameManager.PLAYER_POSITION).normalized()

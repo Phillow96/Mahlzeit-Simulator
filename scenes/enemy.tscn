@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://c1xtnvdho34p3"]
 
-[ext_resource type="Script" uid="uid://catbt1wb4iqxn" path="res://enemy.gd" id="1_4gyqm"]
-[ext_resource type="Texture2D" uid="uid://duwv05lkd7aod" path="res://assets/PUNY_MYTH-CREATURES-RPGMAKER_v1/Battle Sprites/Amaranhig-Enemy.png" id="2_qi2p4"]
-[ext_resource type="Script" uid="uid://784cfkqnafu1" path="res://enemy_mahlzeit_label.gd" id="3_iifgy"]
-[ext_resource type="Script" uid="uid://d3k3yaxn2fef5" path="res://enemy_timer_label.gd" id="4_epg4t"]
+[ext_resource type="Script" uid="uid://catbt1wb4iqxn" path="res://scripts/enemy.gd" id="1_5uy6h"]
+[ext_resource type="Texture2D" uid="uid://duwv05lkd7aod" path="res://assets/PUNY_MYTH-CREATURES-RPGMAKER_v1/Battle Sprites/Amaranhig-Enemy.png" id="2_c4w8v"]
+[ext_resource type="Script" uid="uid://784cfkqnafu1" path="res://scripts/labels/enemy_mahlzeit_label.gd" id="3_xwavj"]
+[ext_resource type="Script" uid="uid://d3k3yaxn2fef5" path="res://scripts/enemy_timer_label.gd" id="4_nenq2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iifgy"]
 size = Vector2(32, 48)
@@ -11,11 +11,11 @@ size = Vector2(32, 48)
 [node name="Enemy" type="Area2D" unique_id=1281348790 groups=["enemy"]]
 collision_layer = 2
 collision_mask = 9
-script = ExtResource("1_4gyqm")
+script = ExtResource("1_5uy6h")
 speed = 200.0
 
 [node name="EnemySprite" type="Sprite2D" parent="." unique_id=1415467956]
-texture = ExtResource("2_qi2p4")
+texture = ExtResource("2_c4w8v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2052374762]
 shape = SubResource("RectangleShape2D_iifgy")
@@ -37,7 +37,7 @@ offset_top = -47.0
 offset_right = 55.0
 offset_bottom = -24.0
 text = "MAHLZEIT !! "
-script = ExtResource("3_iifgy")
+script = ExtResource("3_xwavj")
 
 [node name="EnemyTimerLabel" type="Label" parent="Timers" unique_id=1813237718]
 layout_mode = 0
@@ -45,7 +45,7 @@ offset_left = 16.0
 offset_top = -24.0
 offset_right = 56.0
 offset_bottom = -1.0
-script = ExtResource("4_epg4t")
+script = ExtResource("4_nenq2")
 
 [node name="MobWalkOffTimer" type="Timer" parent="." unique_id=1105958330]
 wait_time = 2.0
