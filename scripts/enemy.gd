@@ -26,8 +26,6 @@ func initialize(player_pos: Vector2):
 	look_at(player_pos)
 	
 	
-
-
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("space") and in_range and $Timers/EnemyMahlzeitLabel.visible:
 		$Timers.hide()
@@ -36,8 +34,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_enemy_mahlzeit_label_timer_timeout() -> void:
-	GameManager.HEALTH -= 1
-	
+	pass
 
 func chase(pos_x: float, pos_y: float, delta):
 	position.x += (pos_x - position.x) * delta

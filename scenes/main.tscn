@@ -14,7 +14,64 @@ projectile_scene = ExtResource("4_choun")
 
 [node name="Map" parent="." unique_id=1901068916 instance=ExtResource("5_ya4ey")]
 
-[node name="Player" parent="." unique_id=2043988467 instance=ExtResource("3_85g3d")]
-position = Vector2(24, 0)
+[node name="GameOver" type="Control" parent="." unique_id=1199077764]
+layout_mode = 3
+anchors_preset = 0
 
-[connection signal="shoot" from="Player" to="." method="_on_player_shoot"]
+[node name="CanvasLayer" type="CanvasLayer" parent="GameOver" unique_id=835701405]
+
+[node name="TextureRect" type="ColorRect" parent="GameOver/CanvasLayer" unique_id=1579202463]
+modulate = Color(0.47843137, 0.47843137, 0.47843137, 0.81960785)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="GameOver/CanvasLayer" unique_id=2107885634]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.5
+offset_top = -22.5
+offset_right = 91.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Game Over!"
+
+[node name="ReplayButton" type="Button" parent="GameOver/CanvasLayer/Label" unique_id=217278163]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = 36.0
+offset_right = 40.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play Again"
+
+[node name="EndGameButton" type="Button" parent="GameOver/CanvasLayer/Label" unique_id=1189824070]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = 76.0
+offset_right = 39.0
+offset_bottom = 107.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "End Game"
+
+[connection signal="pressed" from="GameOver/CanvasLayer/Label/ReplayButton" to="." method="_on_replay_button_pressed"]
+[connection signal="pressed" from="GameOver/CanvasLayer/Label/EndGameButton" to="." method="_on_end_game_button_pressed"]

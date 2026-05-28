@@ -41,7 +41,7 @@ func _physics_process(_delta):
 				$Sprite2D.play("up")
 
 	if Input.is_action_pressed("space") and mahlzeit_cd == false:
-		shoot.emit()
+		GameManager.player_shot.emit()
 		mahlzeit_cd = true
 		$Control/MahlzeitDisplay.start()
 		$Control/MahlzeitCooldownLabel.show()
