@@ -54,8 +54,6 @@ func _on_mob_walk_off_timer_timeout() -> void:
 	
 	rand_x = randf_range(-500,500)
 	rand_y = randf_range(-500,500)
-	print(rand_x + rand_y)
-
 
 func _on_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("projectile")):

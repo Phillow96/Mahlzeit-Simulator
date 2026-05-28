@@ -1,8 +1,10 @@
 extends Area2D
 
+const SPEED = 5
+var direction: Vector2 = Vector2.ZERO
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	var direction = get_global_mouse_position()
-	
-	position += direction * 0.5 * delta
+func _ready():
+	direction = get_local_mouse_position()
+
+func _physics_process(delta: float) -> void:
+	position += direction * SPEED * delta
