@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://wqk6ulyr6hb6" path="res://scripts/labels/mahlzeit_cooldown_label.gd" id="3_i3pqv"]
 [ext_resource type="Script" uid="uid://b2kyau4bl1xvy" path="res://scripts/player/player_score.gd" id="4_qlg0r"]
 [ext_resource type="Script" uid="uid://da374cj41pp6e" path="res://scripts/player/player_health.gd" id="5_tuyoq"]
+[ext_resource type="Script" uid="uid://bmbwahovojuvd" path="res://scenes/health_bar_container.gd" id="6_tuyoq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w48qg"]
 atlas = ExtResource("2_i3pqv")
@@ -122,9 +123,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4c57u"]
 size = Vector2(29, 43)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
-radius = 104.307236
-
 [node name="Player" type="CharacterBody2D" unique_id=2043988467 groups=["player"]]
 collision_mask = 194
 script = ExtResource("1_onrkg")
@@ -142,38 +140,28 @@ frame_progress = 0.33884308
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_4c57u")
 
-[node name="MahlzeitDetector" type="Area2D" parent="." unique_id=2047851389]
-collision_mask = 2
+[node name="Camera2D" type="Camera2D" parent="." unique_id=923434401]
+zoom = Vector2(1.5, 1.5)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MahlzeitDetector" unique_id=591840507]
-shape = SubResource("CircleShape2D_onrkg")
-
-[node name="MahlzeitTimer" type="Timer" parent="MahlzeitDetector" unique_id=1295128022]
-wait_time = 2.0
-one_shot = true
-
-[node name="Control" type="Control" parent="." unique_id=1894200746]
+[node name="MahlzeitCooldown" type="Control" parent="." unique_id=1894200746]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="MahlzeitCooldownLabel" type="Label" parent="Control" unique_id=1492314437]
+[node name="MahlzeitCooldownLabel" type="Label" parent="MahlzeitCooldown" unique_id=1492314437]
 layout_mode = 0
 offset_left = -47.0
 offset_top = -47.0
 offset_right = 49.0
 offset_bottom = -24.0
-text = "MAHLZEIT !! "
+text = "0.0s"
 script = ExtResource("3_i3pqv")
 metadata/_edit_use_anchors_ = true
 
-[node name="MahlzeitDisplay" type="Timer" parent="Control" unique_id=33760527]
+[node name="MahlzeitCooldownTimer" type="Timer" parent="MahlzeitCooldown" unique_id=33760527]
 wait_time = 2.0
 one_shot = true
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=923434401]
-zoom = Vector2(1.5, 1.5)
 
 [node name="Control2" type="Control" parent="." unique_id=650828751]
 layout_mode = 3
@@ -193,12 +181,27 @@ text = "Score:"
 script = ExtResource("4_qlg0r")
 
 [node name="PlayerHealth" type="Label" parent="Control2" unique_id=1838635425]
+visible = false
 layout_mode = 0
-offset_left = 24.0
-offset_right = 85.0
-offset_bottom = 23.0
+offset_left = 368.0
+offset_top = 136.0
+offset_right = 429.0
+offset_bottom = 159.0
 text = "Health: "
 script = ExtResource("5_tuyoq")
 
-[connection signal="area_entered" from="MahlzeitDetector" to="." method="_on_mahlzeit_detector_area_entered"]
-[connection signal="timeout" from="Control/MahlzeitDisplay" to="." method="_on_mahlzeit_display_timeout"]
+[node name="HealthBarContainer" type="HBoxContainer" parent="." unique_id=1782605568]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = 8.0
+offset_right = 12.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+scale = Vector2(0.75, 0.75)
+script = ExtResource("6_tuyoq")
+
+[connection signal="timeout" from="MahlzeitCooldown/MahlzeitCooldownTimer" to="." method="_on_mahlzeit_cooldown_timer_timeout"]

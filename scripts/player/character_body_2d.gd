@@ -43,13 +43,12 @@ func _physics_process(_delta):
 	if Input.is_action_pressed("space") and mahlzeit_cd == false:
 		GameManager.player_shot.emit()
 		mahlzeit_cd = true
-		$Control/MahlzeitDisplay.start()
-		$Control/MahlzeitCooldownLabel.show()
+		$MahlzeitCooldown/MahlzeitCooldownTimer.start()
+		$MahlzeitCooldown/MahlzeitCooldownLabel.show()
 		
 func _process(_delta: float) -> void:
 	GameManager.PLAYER_POSITION = position
 
 
-func _on_mahlzeit_display_timeout() -> void:
+func _on_mahlzeit_cooldown_timer_timeout() -> void:
 	mahlzeit_cd = false
-	$Control/MahlzeitCooldownLabel.hide()

@@ -8,7 +8,6 @@ var spawn_point
 func _on_mob_timer_timeout() -> void:
 	var mob_spawn_location = get_node("../Path2D/PathFollow2D")
 	mob_spawn_location.progress_ratio = randf()
-	print(mob_spawn_location.progress_ratio)
 	
 	var enemy = enemy_scene.instantiate()
 	enemy.initialize(GameManager.PLAYER_POSITION)
