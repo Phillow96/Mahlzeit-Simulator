@@ -19,6 +19,7 @@ layout_mode = 3
 anchors_preset = 0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="GameOver" unique_id=835701405]
+process_mode = 3
 
 [node name="TextureRect" type="ColorRect" parent="GameOver/CanvasLayer" unique_id=1579202463]
 modulate = Color(0.47843137, 0.47843137, 0.47843137, 0.81960785)
@@ -43,8 +44,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 32
 text = "Game Over!"
 
-[node name="ReplayButton" type="Button" parent="GameOver/CanvasLayer/Label" unique_id=217278163]
-layout_mode = 1
+[node name="ReplayButton" type="Button" parent="GameOver/CanvasLayer" unique_id=217278163]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -58,20 +58,28 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Play Again"
 
-[node name="EndGameButton" type="Button" parent="GameOver/CanvasLayer/Label" unique_id=1189824070]
-layout_mode = 1
+[node name="EndGameButton" type="Button" parent="GameOver/CanvasLayer" unique_id=1189824070]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -48.0
-offset_top = 76.0
+offset_top = 116.0
 offset_right = 39.0
-offset_bottom = 107.0
+offset_bottom = 147.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "End Game"
 
-[connection signal="pressed" from="GameOver/CanvasLayer/Label/ReplayButton" to="." method="_on_replay_button_pressed"]
-[connection signal="pressed" from="GameOver/CanvasLayer/Label/EndGameButton" to="." method="_on_end_game_button_pressed"]
+[node name="DisplayHighScoreButton" type="Button" parent="GameOver/CanvasLayer" unique_id=79851848]
+offset_left = 528.0
+offset_top = 400.0
+offset_right = 616.0
+offset_bottom = 431.0
+text = "Highscore"
+
+[connection signal="visibility_changed" from="GameOver/CanvasLayer" to="." method="_on_canvas_layer_visibility_changed"]
+[connection signal="pressed" from="GameOver/CanvasLayer/ReplayButton" to="." method="_on_replay_button_pressed"]
+[connection signal="pressed" from="GameOver/CanvasLayer/EndGameButton" to="." method="_on_end_game_button_pressed"]
+[connection signal="pressed" from="GameOver/CanvasLayer/DisplayHighScoreButton" to="." method="_on_display_high_score_button_pressed"]
