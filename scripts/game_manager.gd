@@ -1,6 +1,7 @@
 extends Node
 
 signal player_shot()
+signal player_hit()
 
 var HEALTH: int
 var SCORE: int

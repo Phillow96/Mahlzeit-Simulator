@@ -33,6 +33,7 @@ func _on_player_shoot() -> void:
 
 func _on_replay_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	GameManager.SCORE = 0
 
 
 func _on_end_game_button_pressed() -> void:
