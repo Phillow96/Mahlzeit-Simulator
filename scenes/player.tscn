@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://tvnimq0q20em" path="res://scripts/player/character_body_2d.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://dk23i7n64r7x0" path="res://assets/PUNY_MYTH-CREATURES-RPGMAKER_v1/Hero Battle Sprites/Katipunero.png" id="2_i3pqv"]
 [ext_resource type="Script" uid="uid://wqk6ulyr6hb6" path="res://scripts/labels/mahlzeit_cooldown_label.gd" id="3_i3pqv"]
+[ext_resource type="Script" uid="uid://b2kyau4bl1xvy" path="res://scripts/player/player_score.gd" id="4_qlg0r"]
+[ext_resource type="Script" uid="uid://da374cj41pp6e" path="res://scripts/player/player_health.gd" id="5_tuyoq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w48qg"]
 atlas = ExtResource("2_i3pqv")
@@ -172,6 +174,31 @@ one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=923434401]
 zoom = Vector2(1.5, 1.5)
+
+[node name="Control2" type="Control" parent="." unique_id=650828751]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -400.0
+offset_top = -192.0
+offset_right = -360.0
+offset_bottom = -152.0
+
+[node name="PlayerScore" type="Label" parent="Control2" unique_id=878469559]
+layout_mode = 0
+offset_left = 24.0
+offset_top = -24.0
+offset_right = 84.0
+offset_bottom = -1.0
+text = "Score:"
+script = ExtResource("4_qlg0r")
+
+[node name="PlayerHealth" type="Label" parent="Control2" unique_id=1838635425]
+layout_mode = 0
+offset_left = 24.0
+offset_right = 85.0
+offset_bottom = 23.0
+text = "Health: "
+script = ExtResource("5_tuyoq")
 
 [connection signal="area_entered" from="MahlzeitDetector" to="." method="_on_mahlzeit_detector_area_entered"]
 [connection signal="timeout" from="Control/MahlzeitDisplay" to="." method="_on_mahlzeit_display_timeout"]

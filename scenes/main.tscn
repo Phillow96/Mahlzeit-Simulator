@@ -5,8 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://bxra2fyxbi4fo" path="res://scenes/player.tscn" id="3_85g3d"]
 [ext_resource type="PackedScene" uid="uid://1ujd6jr1ta01" path="res://scenes/projectile.tscn" id="4_choun"]
 [ext_resource type="PackedScene" uid="uid://cfv74eih27ohh" path="res://scenes/map.tscn" id="5_ya4ey"]
-[ext_resource type="Script" uid="uid://b2kyau4bl1xvy" path="res://scripts/player/player_score.gd" id="6_eb6dy"]
-[ext_resource type="Script" uid="uid://da374cj41pp6e" path="res://scripts/player/player_health.gd" id="7_trceg"]
 
 [node name="Main" type="Node2D" unique_id=1573684800]
 script = ExtResource("1_o6xl0")
@@ -15,29 +13,6 @@ player_scene = ExtResource("3_85g3d")
 projectile_scene = ExtResource("4_choun")
 
 [node name="Map" parent="." unique_id=1901068916 instance=ExtResource("5_ya4ey")]
-
-[node name="Control" type="Control" parent="." unique_id=1786868073]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="PlayerScore" type="Label" parent="Control" unique_id=1036748963]
-layout_mode = 0
-offset_left = 24.0
-offset_top = -24.0
-offset_right = 84.0
-offset_bottom = -1.0
-text = "Score:"
-script = ExtResource("6_eb6dy")
-
-[node name="PlayerHealth" type="Label" parent="Control" unique_id=1680143733]
-layout_mode = 0
-offset_left = 24.0
-offset_right = 85.0
-offset_bottom = 23.0
-text = "Health: "
-script = ExtResource("7_trceg")
 
 [node name="Player" parent="." unique_id=2043988467 instance=ExtResource("3_85g3d")]
 position = Vector2(24, 0)
