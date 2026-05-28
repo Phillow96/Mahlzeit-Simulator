@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Mahlzeit"
-run/main_scene="uid://dwgyc6d4qtg72"
+run/main_scene="uid://ch3t5cj4d3igt"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 

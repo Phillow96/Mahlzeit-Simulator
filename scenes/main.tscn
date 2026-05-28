@@ -19,6 +19,7 @@ layout_mode = 3
 anchors_preset = 0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="GameOver" unique_id=835701405]
+process_mode = 3
 
 [node name="TextureRect" type="ColorRect" parent="GameOver/CanvasLayer" unique_id=1579202463]
 modulate = Color(0.47843137, 0.47843137, 0.47843137, 0.81960785)
@@ -73,5 +74,6 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "End Game"
 
+[connection signal="visibility_changed" from="GameOver/CanvasLayer" to="." method="_on_canvas_layer_visibility_changed"]
 [connection signal="pressed" from="GameOver/CanvasLayer/Label/ReplayButton" to="." method="_on_replay_button_pressed"]
 [connection signal="pressed" from="GameOver/CanvasLayer/Label/EndGameButton" to="." method="_on_end_game_button_pressed"]

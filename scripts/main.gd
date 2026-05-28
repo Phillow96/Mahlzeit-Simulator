@@ -38,3 +38,8 @@ func _on_replay_button_pressed() -> void:
 
 func _on_end_game_button_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_canvas_layer_visibility_changed() -> void:
+	if $GameOver/CanvasLayer.visible:
+		get_tree().paused = true
